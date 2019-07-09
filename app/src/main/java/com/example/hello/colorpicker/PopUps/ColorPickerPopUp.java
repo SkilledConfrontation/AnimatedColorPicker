@@ -57,6 +57,8 @@ public class ColorPickerPopUp  {
         setUpView();
         displayAlertDialog();
 
+        System.exit(0);
+
     }
 
 
