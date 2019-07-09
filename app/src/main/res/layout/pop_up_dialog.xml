@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="7dp" android:paddingEnd="7dp"  android:id="@+id/root" >
+
+    <com.example.hello.colorpicker.Views.ColorSelectionLeft
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/colorSelectionRight"
+        />
+
+    <com.example.hello.colorpicker.Views.ColorSelectionSquare
+        android:id="@+id/colorSelectionSquare"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_toStartOf="@id/colorSelectionRight"
+        />
+
+
+    <com.example.hello.colorpicker.Views.ColorDemo
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/colorSelectionSquare"
+        android:layout_alignStart="@id/colorSelectionSquare"
+        android:layout_alignEnd="@id/colorSelectionRight"
+        android:id="@+id/colorSelectionDemo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Select Color"
+         android:background="@android:color/transparent"
+         android:layout_below="@id/colorSelectionDemo"
+         android:layout_alignParentEnd="true"
+         android:id="@+id/close"
+         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Previous"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/colorSelectionDemo"
+        android:layout_alignParentStart="true"
+        android:id="@+id/previous"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter color name here"
+        android:background="@drawable/round_edit_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:id="@+id/colorName"
+        />
+
+
+</RelativeLayout>

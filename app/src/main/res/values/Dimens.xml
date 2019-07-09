@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="leftColorSelectionWidth">50dp</dimen>
+    <dimen name="leftColorSelectionHeight">450dp</dimen>
+
+    <dimen name="colorSelectionSquareDimension">200dp</dimen>
+
+    <dimen name="colorNameDrawablePadding">10dp</dimen>
+
+
+
+</resources>
