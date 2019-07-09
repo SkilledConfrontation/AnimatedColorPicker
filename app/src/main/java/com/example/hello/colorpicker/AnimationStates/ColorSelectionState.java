@@ -7,6 +7,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
 import com.example.hello.colorpicker.PopUps.ColorPickerPopUp;
+import com.example.hello.colorpicker.Views.ColorDemo;
 import com.example.hello.colorpicker.Views.ColorSelectionLeft;
 import com.example.hello.colorpicker.Views.ColorSelectionSquare;
 
@@ -16,6 +17,9 @@ public class ColorSelectionState extends BaseState implements ColorSelectionLeft
     private float colorSelectionSquareStartX;
     private float colorSelectionRightStartX;
 
+    private ColorSelectionSquare colorSelectionSquare;
+    private ColorSelectionLeft colorSelectionRight;
+    private ColorDemo colorDemo;
 
 
     public ColorSelectionState(ColorPickerPopUp colorPickerPopUp) {
@@ -23,6 +27,10 @@ public class ColorSelectionState extends BaseState implements ColorSelectionLeft
         super(colorPickerPopUp);
 
         init();
+
+        colorSelectionSquare = getColorPickerPopUp().getColorSelectionSquare();
+        colorSelectionRight = getColorPickerPopUp().getColorSelectionLeft();
+        colorDemo = getColorPickerPopUp().getColorDemo();
 
         getColorPickerPopUp().getColorSelectionLeft().setOnColorSlided(this);
         getColorPickerPopUp().getColorSelectionSquare().setOnColorChoosen(this);
@@ -108,14 +116,16 @@ public class ColorSelectionState extends BaseState implements ColorSelectionLeft
     @Override
     public void onColorSlide(int pixelColor) {
 
-        getColorPickerPopUp().getColorSelectionSquare().setPaint(pixelColor);
-        getColorPickerPopUp().getColorDemo().setColor(getColorPickerPopUp().getColorSelectionSquare().getCurrentColor());
+
+        colorSelectionSquare.setPaint(pixelColor);
+        colorDemo.setColor(colorSelectionSquare.getCurrentColor());
+
 
 
     }
 
     @Override
     public void onColorChoosen(int color) {
-        getColorPickerPopUp().getColorDemo().setColor(color);
+        colorDemo.setColor(color);
     }
 }

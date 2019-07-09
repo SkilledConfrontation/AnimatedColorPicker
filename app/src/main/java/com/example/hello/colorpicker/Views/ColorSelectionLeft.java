@@ -78,8 +78,6 @@ public class ColorSelectionLeft extends View  {
             checkTopBounds();
             checkBottomBounds();
 
-          //  colorSelectionSquare.setPaint(color.getPixel(0,getMiddleY()));
-
             onColorSlided.onColorSlide(color.getPixel(0,getMiddleY()));
 
             invalidate();
