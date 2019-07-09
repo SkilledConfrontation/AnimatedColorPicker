@@ -55,10 +55,11 @@ public class ColorSelectionSquare extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
+/*
         paint.setShader(composeShader);
 
         colorCanvas.drawRect(colorBounds,paint);
+        */
 
         canvas.drawBitmap(colorBitmap,0,0,null);
 
@@ -156,6 +157,10 @@ public class ColorSelectionSquare extends View {
 
         colorShader = new LinearGradient(0,0,getMeasuredWidth(),0,Color.WHITE,color,Shader.TileMode.CLAMP);
         composeShader = new ComposeShader(blackAndWhite,colorShader,PorterDuff.Mode.MULTIPLY);
+
+        paint.setShader(composeShader);
+
+        colorCanvas.drawRect(colorBounds,paint);
 
     }
 
