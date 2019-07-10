@@ -10,19 +10,33 @@ To create a new animation all you have to do is subclass BaseState and fill out 
 
 # Usage
 
-~~~
 
-ColorPickerPopUp colorPickerPopUp = new ColorPickerPopUp(this); // Creates a blank color picker with no state transitions
 
-~~~
 
 ~~~
-ColorPickerPopUp colorPickerPopUp = new ColorPickerPopUp(this); 
-colorPickerPopUp.addState(new ColorNamingState(colorPickerPopUp)); // Creates an animation to name the color.
+ColorPickerPopUp colorPickerPopUp = new ColorPickerPopUp(this);
+
+  colorPickerPopUp.displayAlertDialog(new ColorSelectionState(colorPickerPopUp, new OnColorSelected() {
+            @Override
+            public void onColorSelected(int color) {
+
+                Toast.makeText(MainActivity.this,String.valueOf(color),Toast.LENGTH_SHORT).show();
+
+            }
+        }));
+
+        colorPickerPopUp.addState(new ColorNamingState(colorPickerPopUp, new OnColorNamed() {
+                    @Override
+                    public void OnColorNamed(String name) {
+                        Toast.makeText(MainActivity.this,name,Toast.LENGTH_SHORT).show();
+
+                    }
+                }));
+
 ~~~
 
 # Adding to your project
-Add the jitpack respository to your build.gradle file
+Add the jitpack repository to your build.gradle file
 ~~~
 
 allprojects {

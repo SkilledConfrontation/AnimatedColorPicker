@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         }));
 
 
-        /*
+
         colorPickerPopUp.addState(new ColorNamingState(colorPickerPopUp, new OnColorNamed() {
             @Override
             public void OnColorNamed(String name) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }));
-        */
+
 
 
 
