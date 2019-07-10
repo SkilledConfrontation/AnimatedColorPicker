@@ -1,10 +1,13 @@
+//apply plugin: 'com.android.application'
 apply plugin: 'com.android.library'
+
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.SkilledConfrontation'
 
 android {
     compileSdkVersion 28
     defaultConfig {
+       // applicationId "com.example.hello.myapplication"
         minSdkVersion 26
         targetSdkVersion 28
         versionCode 1

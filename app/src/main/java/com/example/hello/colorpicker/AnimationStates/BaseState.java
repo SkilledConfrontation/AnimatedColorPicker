@@ -70,6 +70,7 @@ public abstract class BaseState {
     public abstract AnimatorSet getExitAnimation();
 
 
+    public abstract void onDone();
 
     public abstract AnimatorSet getEnterAnimation();
 

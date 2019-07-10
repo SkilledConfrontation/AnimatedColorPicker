@@ -49,17 +49,18 @@ public class ColorSelectionSquare extends View {
         paint = new Paint();
         target = BitmapFactory.decodeResource(getResources(),R.drawable.target);
         colorBounds = new Rect();
+
     }
 
 
 
     @Override
     protected void onDraw(Canvas canvas) {
-/*
+
         paint.setShader(composeShader);
 
         colorCanvas.drawRect(colorBounds,paint);
-        */
+
 
         canvas.drawBitmap(colorBitmap,0,0,null);
 
@@ -79,7 +80,6 @@ public class ColorSelectionSquare extends View {
     public boolean onTouchEvent(MotionEvent event) {
 
        Log.i("Event",String.valueOf(event.getAction()));
-
 
 
         if(event.getActionMasked() == MotionEvent.ACTION_DOWN || event.getActionMasked() == MotionEvent.ACTION_MOVE){
@@ -125,6 +125,7 @@ public class ColorSelectionSquare extends View {
         colorCanvas = new Canvas(colorBitmap);
 
         blackAndWhite = new LinearGradient(0,0,0,getMeasuredHeight(),Color.WHITE,Color.BLACK,Shader.TileMode.CLAMP);
+
 
         setColorShader();
 

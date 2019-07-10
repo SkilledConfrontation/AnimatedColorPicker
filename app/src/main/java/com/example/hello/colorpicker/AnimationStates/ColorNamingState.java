@@ -14,11 +14,12 @@ public class ColorNamingState extends BaseState {
 
     private EditText colorName;
     private float colorDemoY;
+    private OnColorNamed onColorNamed;
 
-    public ColorNamingState(ColorPickerPopUp colorPickerPopUp) {
+    public ColorNamingState(ColorPickerPopUp colorPickerPopUp,OnColorNamed onColorNamed) {
         super(colorPickerPopUp);
         colorName = colorPickerPopUp.getColorName();
-
+        this.onColorNamed = onColorNamed;
     }
 
     private float getColorNamePosition(){
@@ -62,6 +63,19 @@ public class ColorNamingState extends BaseState {
         animatorSet.play(createNextButtonFadeOut()).with(createColorNameColorDemoExitAnimation());
 
         return animatorSet;
+
+    }
+
+
+
+    @Override
+    public void onDone() {
+
+        EditText editText = getColorPickerPopUp().getColorName();
+
+        String enteredName = editText.getText().toString();
+
+        onColorNamed.OnColorNamed(enteredName);
 
     }
 

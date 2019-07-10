@@ -42,49 +42,42 @@ public class ColorPickerPopUp  {
     // State design pattern starts here
     private BaseState currentState;
 
-    private ColorSelectionState colorSelectionState;
+    private ColorSelectionState enteringState;
+
+    //private ColorSelectionState colorSelectionState;
 
     private ArrayList<BaseState> states;
     private int currentStateIndex = 0;
 
-    private boolean stillTranstioning =false;
+    private boolean stillTranstioning = false;
 
 
 
     public ColorPickerPopUp(Context context){
 
         this.context = context;
-        setUpView();
-        displayAlertDialog();
-
-        //njfbknfbnjbfnjfb
-
 
     }
 
 
 
-    private void displayAlertDialog(){
+    public void displayAlertDialog(ColorSelectionState colorSelectionState){
+
+        setUpView();
 
         findViews();
 
         createAlertDialog();
 
-        createFirstState();
 
-    }
-
-    private void createFirstState(){
-
-        colorSelectionState = new ColorSelectionState(ColorPickerPopUp.this);
-
-        currentState =colorSelectionState;
-
+        enteringState = colorSelectionState;
         states = new ArrayList<>();
-
         states.add(colorSelectionState);
 
     }
+
+
+
 
     private void findViews(){
 
@@ -133,10 +126,13 @@ public class ColorPickerPopUp  {
                             alertDialog.dismiss();
                         }
                     });
-
-
-
                 }
+
+              //  currentState.onViewReady();
+
+                enteringState.onViewReady();
+
+                currentState = enteringState;
 
                 getNextButton().setOnClickListener(nextStateOnClick);
                 getPreviousButton().setOnClickListener(previousStateOnClick);
@@ -146,13 +142,6 @@ public class ColorPickerPopUp  {
 
             }
         });
-
-
-
-
-
-
-
 
     }
 
@@ -211,6 +200,8 @@ public class ColorPickerPopUp  {
 
             boolean shouldExit = currentStateIndex == 0 && states.size() ==1 || states.size()-1 == currentStateIndex;
 
+            currentState.onDone();
+
             if(shouldExit){
 
                 alertDialog.dismiss();
@@ -222,15 +213,11 @@ public class ColorPickerPopUp  {
 
             if(states.size() > 1){
 
-
                  currentStateIndex+=1;
 
-                playTransitionAnimation(states.get(currentStateIndex));
+                 playTransitionAnimation(states.get(currentStateIndex));
 
             }
-
-
-
 
         }
     };
@@ -254,7 +241,6 @@ public class ColorPickerPopUp  {
     };
 
 
-    // Wait for animation to be done before modifying the index value.
 
     public void addState(BaseState baseState){
 

@@ -43,6 +43,7 @@ public class ColorSelectionLeft extends View  {
 
         this.onColorSlided = onColorSlided;
 
+
     }
 
 
@@ -78,7 +79,13 @@ public class ColorSelectionLeft extends View  {
             checkTopBounds();
             checkBottomBounds();
 
-            onColorSlided.onColorSlide(color.getPixel(0,getMiddleY()));
+            if(onColorSlided != null){
+
+                onColorSlided.onColorSlide(color.getPixel(0,getMiddleY()));
+
+
+            }
+
 
             invalidate();
 
@@ -144,6 +151,7 @@ public class ColorSelectionLeft extends View  {
           Bitmap original = BitmapFactory.decodeResource(getResources(),R.drawable.color_left_selection);
 
           color = Bitmap.createScaledBitmap(original,getMeasuredWidth(),getMeasuredHeight(),false);
+
 
     }
 
