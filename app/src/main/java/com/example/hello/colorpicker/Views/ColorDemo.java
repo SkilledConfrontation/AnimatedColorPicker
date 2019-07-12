@@ -24,6 +24,7 @@ public class ColorDemo extends View {
 
 
 
+
     public ColorDemo(Context context, AttributeSet attributeSet){
 
         super(context,attributeSet);
@@ -92,6 +93,13 @@ public class ColorDemo extends View {
         canvas.drawText(rgb,getMeasuredWidth()/2-textBounds.width()/2,textY,textPaint);
 
     }
+
+    public void setCurrentText(String currentText){
+
+        rgb = currentText;
+
+    }
+
 
 
 
