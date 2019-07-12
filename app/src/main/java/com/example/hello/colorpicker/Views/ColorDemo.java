@@ -21,10 +21,6 @@ public class ColorDemo extends View {
     private Rect colorDemoBounds;
     private Rect textBounds;
 
-
-
-
-
     public ColorDemo(Context context, AttributeSet attributeSet){
 
         super(context,attributeSet);
@@ -94,9 +90,13 @@ public class ColorDemo extends View {
 
     }
 
-    public void setCurrentText(String currentText){
+    public void setCurrentText(String currentText,int textColor){
 
         rgb = currentText;
+
+        textPaint.setColor(textColor);
+
+        invalidate();
 
     }
 
